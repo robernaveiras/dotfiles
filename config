@@ -38,8 +38,7 @@ bindsym $mod+Shift+d exec $terminal -e lazydocker
 # Utilities
 bindsym $mod+Escape exec wlogout
 bindsym $mod+Shift+s exec loginctl lock-session && systemctl suspend
-bindsym $mod+Shift+h exec ~/scripts/hypr-manager.sh
-bindsym $mod+Shift+c exec ~/scripts/config-manager.sh
+
 bindsym $mod+Shift+p exec grim -g "$(slurp)" - | wl-copy # Replaced hyprpicker with grim/slurp
 bindsym $mod+Shift+o exec grim -g "$(slurp)" - | wl-copy -t image/png # Replaced hyprshot with grim/slurp
 bindsym $mod+v exec ~/scripts/clipboard.sh
