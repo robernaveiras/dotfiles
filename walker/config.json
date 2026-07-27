@@ -1,0 +1,32 @@
+{
+  "app_launch_prefix": "",
+  "selection_wrapped": true,
+  "show_icons": true,
+  "style": "style.css",
+  "ui": {
+    "theme": "tokyonight",    
+    "fullscreen": false,
+    "width": 500,
+    "height": 400,
+    "flyout_placeholder": "Buscar...",
+    "window_title": "Walker"
+  },
+  "terminal": "ghostty",
+  "search": {
+    "placeholder": "Buscar aplicaciones o comandos..."
+  },
+  "plugins": [
+    {
+      "name": "applications",
+      "placeholder": "Apps"
+    },
+    {
+      "name": "commands",
+      "placeholder": "Comandos"
+    },
+    {
+      "name": "finder",
+      "placeholder": "Archivos"
+    }
+  ]
+}

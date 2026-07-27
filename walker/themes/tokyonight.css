@@ -1,0 +1,50 @@
+/* Paleta Tokyo Night Storm */
+@define-color background #1a1b26;
+@define-color background-alt #24283b;
+@define-color foreground #c0caf5;
+@define-color selection #33467c;
+@define-color accent #7dcfff;
+@define-color critical #f7768e;
+@define-color comment #565f89;
+
+#window {
+    background: transparent;
+}
+
+#box {
+    background: @background;
+    border: 2px solid @accent;
+    border-radius: 12px;
+    padding: 10px;
+}
+
+#search {
+    background: @background-alt;
+    color: @foreground;
+    border-radius: 8px;
+    padding: 8px;
+    margin-bottom: 10px;
+    border: none;
+    caret-color: @accent;
+}
+
+#item {
+    padding: 8px;
+    border-radius: 6px;
+    color: @foreground;
+}
+
+#item:selected {
+    background: @selection;
+    color: @accent;
+}
+
+#text {
+    font-family: "JetBrains Mono";
+    font-size: 11pt;
+}
+
+#label {
+    color: @comment;
+    font-size: 9pt;
+}

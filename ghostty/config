@@ -1,0 +1,48 @@
+# Dynamic theme colors
+background = #000000
+
+# Font
+font-family = "SauceCodePro Nerd Font"
+font-style = Regular
+font-size = 14
+
+# Window
+window-theme = ghostty
+window-padding-x = 14
+window-padding-y = 14
+confirm-close-surface=false
+resize-overlay = never
+gtk-toolbar-style = flat
+window-decoration = true
+
+# Cursor styling
+cursor-style = "block"
+cursor-style-blink = false
+shell-integration-features = no-cursor
+
+# Keyboard bindings
+keybind = shift+insert=paste_from_clipboard
+keybind = control+insert=copy_to_clipboard
+keybind = super+control+shift+alt+arrow_down=resize_split:down,100
+keybind = super+control+shift+alt+arrow_up=resize_split:up,100
+keybind = super+control+shift+alt+arrow_left=resize_split:left,100
+keybind = super+control+shift+alt+arrow_right=resize_split:right,100
+keybind = control+shift+o=new_split:right
+keybind = control+shift+l=new_split:down
+
+# SSH session terminfo
+shell-integration-features = ssh-env
+
+#Increase scrollback
+scrollback-limit = 524288000
+
+
+
+# Slowdown mouse scrolling
+mouse-scroll-multiplier = 5
+
+# 1. Asegura que el portapapeles primario se comunique correctamente
+copy-on-select = true
+
+# 2. Desactiva la barra de desplazamiento gráfica de GTK
+scrollbar = never

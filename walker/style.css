@@ -1,0 +1,43 @@
+/* Estilos para Walker 2.13.0 - Tokyo Night */
+
+#window {
+    background-color: transparent;
+}
+
+box#layout {
+    background-color: #1a1b26; /* Fondo Tokyo Night Storm */
+    border: 2px solid #7dcfff;
+    border-radius: 12px;
+    padding: 10px;
+}
+
+input#search {
+    background-color: #24283b;
+    color: #c0caf5;
+    border-radius: 8px;
+    padding: 8px;
+    box-shadow: none;
+    border: none;
+    margin: 5px;
+}
+
+#entry {
+    padding: 8px;
+    border-radius: 6px;
+    color: #a9b1d6;
+}
+
+#entry:selected {
+    background-color: #33467c;
+    color: #7dcfff;
+}
+
+label#text {
+    font-family: "JetBrains Mono";
+    font-size: 1.1rem;
+}
+
+label#sub {
+    color: #565f89;
+    font-size: 0.9rem;
+}

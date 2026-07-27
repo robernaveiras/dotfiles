@@ -1,0 +1,51 @@
+/* Configuración General */
+window {
+    background-color: rgba(26, 27, 38, 0.85); /* Fondo Tokyo Night con transparencia */
+}
+
+button {
+    color: #a9b1d6; /* Texto/Iconos en gris azulado */
+    background-color: #24283b; /* Fondo de botones oscuro */
+    outline-style: none;
+    border: none;
+    border-radius: 15px; /* Bordes redondeados minimalistas */
+    margin: 15px;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 25%; /* Iconos pequeños y minimalistas */
+    transition: all 0.3s ease-in-out;
+}
+
+/* Efecto al pasar el ratón (Hover) */
+button:focus,
+button:active,
+button:hover {
+    color: #7aa2f7; /* Azul brillante al hover */
+    background-color: #414868;
+    border: 2px solid #7aa2f7;
+}
+
+/* Identificadores específicos para iconos */
+#lock {
+    background-image: image(url("/usr/share/wlogout/icons/lock.png"));
+}
+
+#logout {
+    background-image: image(url("/usr/share/wlogout/icons/logout.png"));
+}
+
+#suspend {
+    background-image: image(url("/usr/share/wlogout/icons/suspend.png"));
+}
+
+#hibernate {
+    background-image: image(url("/usr/share/wlogout/icons/hibernate.png"));
+}
+
+#shutdown {
+    background-image: image(url("/usr/share/wlogout/icons/shutdown.png"));
+}
+
+#reboot {
+    background-image: image(url("/usr/share/wlogout/icons/reboot.png"));
+}
