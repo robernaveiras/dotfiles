@@ -10,7 +10,13 @@ First, open a terminal and install all the necessary packages for this setup.
 
 ```bash
 sudo apt update
-sudo apt install -y sway swaybg waybar dunst nautilus wget grim slurp btop cliphist unzip wlogout wl-clipboard bluetui pavucontrol polkit-kde-agent-1
+sudo apt install -y sway swaybg waybar dunst nautilus wget grim slurp btop cliphist unzip wlogout wl-clipboard bluetui pavucontrol polkit-kde-agent-1 neovim fish
+```
+
+### Change Default Shell to Fish
+
+```bash
+chsh -s $(which fish)
 ```
 
 ### Google Chrome
@@ -76,6 +82,8 @@ cp -r ./walker ~/.config/
 cp -r ./btop ~/.config/
 cp -r ./lazydocker ~/.config/
 cp -r ./pavucontrol ~/.config/
+cp -r ./nvim ~/.config/
+cp -r ./fish ~/.config/
 cp -r ./scripts ~/
 ```
 
@@ -96,7 +104,7 @@ The content of the `sway/config` file is provided below for reference.
 
 # Variables
 set $mod Mod4
-set $terminal ghostty
+set $terminal ghostty -e fish
 set $browser google-chrome-stable
 
 # Layout
@@ -127,13 +135,11 @@ bindsym $mod+Shift+b exec $browser
 bindsym $mod+Shift+Alt+b exec $browser --private
 bindsym $mod+Shift+t exec $terminal -e btop
 bindsym $mod+Shift+d exec $terminal -e lazydocker
+bindsym $mod+e exec $terminal -e nvim
 
 # Utilities
 bindsym $mod+Escape exec wlogout
 bindsym $mod+Shift+s exec loginctl lock-session && systemctl suspend
-
-bindsym $mod+Shift+p exec grim -g "$(slurp)" - | wl-copy # Replaced hyprpicker with grim/slurp
-bindsym $mod+Shift+o exec grim -g "$(slurp)" - | wl-copy -t image/png # Replaced hyprshot with grim/slurp
 bindsym $mod+v exec ~/scripts/clipboard.sh
 bindsym $mod+Shift+v exec ~/scripts/clipboard-manager.sh
 
