@@ -18,10 +18,27 @@ Abre una terminal e instala todas las dependencias y programas necesarios.
 
 ### Paquetes Principales desde APT
 
+`git` es necesario para clonar el repositorio y `curl` para descargar `rustup`.
+
 ```bash
 sudo apt update
-sudo apt install -y sway swaybg waybar dunst nautilus wget grim slurp btop cliphist unzip wlogout wl-clipboard bluetui pavucontrol polkit-kde-agent-1 neovim fish
+sudo apt install -y sway swaybg waybar dunst nautilus wget curl git grim slurp btop cliphist unzip wlogout wl-clipboard pavucontrol polkit-kde-agent-1 neovim fish
 ```
+
+### Bluetui (Gestor de Bluetooth TUI)
+
+`bluetui` se instala usando `cargo`, el gestor de paquetes de Rust.
+
+1.  **Instalar `rustup` (el instalador de Rust):**
+    ```bash
+    curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+    ```
+    Sigue las instrucciones en pantalla. Después de la instalación, asegúrate de recargar tu shell o abrir una nueva para que los cambios en el `PATH` surtan efecto.
+
+2.  **Instalar `bluetui`:**
+    ```bash
+    cargo install bluetui
+    ```
 
 ### Terminal Ghostty
 

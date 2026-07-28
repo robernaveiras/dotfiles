@@ -42,7 +42,7 @@ bindsym $mod+Shift+s exec loginctl lock-session && systemctl suspend
 
 bindsym $mod+Shift+p exec grim -g "$(slurp)" - | wl-copy # Replaced hyprpicker with grim/slurp
 bindsym $mod+Shift+o exec grim -g "$(slurp)" - | wl-copy -t image/png # Replaced hyprshot with grim/slurp
-bindsym $mod+v exec ~/scripts/clipboard.sh
+bindsym $mod+Control+b exec ~/scripts/clipboard.sh
 bindsym $mod+Shift+v exec ~/scripts/clipboard-manager.sh
 
 # Workspaces
