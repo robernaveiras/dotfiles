@@ -17,7 +17,7 @@ font pango:SauceCodePro Nerd Font 14
 
 # Autostart
 exec waybar
-exec swaybg -i /home/mephysto/foo/tokyonight-wallpapers/aid_upscayl_realesrgan-x4plus_x2.png
+exec swaybg -i $HOME/Pictures/wallpaper.png # ATENCIÓN: Debes cambiar esta ruta a tu wallpaper.
 # exec setsid elephant
 # exec setsid walker --gapplication-service
 exec wl-paste --type text --watch cliphist store
@@ -161,4 +161,4 @@ bar {
 #
 # Includes
 #
-include /home/mephysto/.config/sway/themes/tokyonight.conf
+include $HOME/.config/sway/themes/tokyonight.conf

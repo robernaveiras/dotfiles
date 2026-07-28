@@ -1,45 +1,31 @@
-# Sway Configuration Guide for Ubuntu 26
+# Guía de Configuración de Sway para Ubuntu
 
-This guide will walk you through setting up this sway configuration on a fresh Ubuntu 26 installation.
+Este repositorio contiene una configuración personal para el gestor de ventanas [Sway](https://swaywm.org/) y un conjunto de herramientas complementarias para tener un entorno de escritorio completo y funcional en Ubuntu 26.04 o superior.
 
-## 1. Installation
+## Paso 1: Clonar el Repositorio
 
-First, open a terminal and install all the necessary packages for this setup.
+Primero, clona este repositorio en tu máquina local.
 
-### Main Packages
+```bash
+git clone https://github.com/tu-usuario/tu-repositorio.git
+cd tu-repositorio
+```
+**Nota:** Reemplaza `https://github.com/tu-usuario/tu-repositorio.git` con la URL real de este repositorio.
+
+## Paso 2: Instalación de Paquetes
+
+Abre una terminal e instala todas las dependencias y programas necesarios.
+
+### Paquetes Principales desde APT
 
 ```bash
 sudo apt update
 sudo apt install -y sway swaybg waybar dunst nautilus wget grim slurp btop cliphist unzip wlogout wl-clipboard bluetui pavucontrol polkit-kde-agent-1 neovim fish
 ```
 
-### Change Default Shell to Fish
+### Terminal Ghostty
 
-```bash
-chsh -s $(which fish)
-```
-
-### Google Chrome
-
-This configuration uses Google Chrome as the default browser.
-
-```bash
-wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
-sudo apt install -y ./google-chrome-stable_current_amd64.deb
-rm google-chrome-stable_current_amd64.deb
-```
-
-### Lazydocker
-
-This configuration includes a keybinding for Lazydocker to manage Docker containers.
-
-```bash
-sudo snap install lazydocker
-```
-
-### Ghostty
-
-This configuration uses Ghostty as the default terminal emulator.
+Esta configuración usa [Ghostty](https://github.com/ghostty-org/ghostty) como emulador de terminal por defecto.
 
 ```bash
 sudo add-apt-repository ppa:mkasberg/ghostty-ubuntu
@@ -47,223 +33,94 @@ sudo apt update
 sudo apt install ghostty
 ```
 
-## 2. Font Installation
+### Navegador Google Chrome
 
-This configuration uses the "SauceCodePro Nerd Font".
+```bash
+wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
+sudo apt install -y ./google-chrome-stable_current_amd64.deb
+rm google-chrome-stable_current_amd64.deb
+```
 
-1.  Download and extract the font:
+### Lazydocker (Opcional)
+
+Se incluye un atajo de teclado para [Lazydocker](https://github.com/jesseduffield/lazydocker) para gestionar contenedores Docker.
+
+```bash
+go install github.com/jesseduffield/lazydocker@latest
+```
+
+## Paso 3: Instalación de la Tipografía
+
+La configuración utiliza la fuente `SourceCodePro Nerd Font` para asegurar que todos los iconos se muestren correctamente.
+
+1.  Descarga y extrae la fuente:
     ```bash
     wget https://github.com/ryanoasis/nerd-fonts/releases/download/v3.2.1/SourceCodePro.zip
     mkdir -p ~/.local/share/fonts
     unzip SourceCodePro.zip -d ~/.local/share/fonts/
     rm SourceCodePro.zip
     ```
-2.  Update the font cache:
+2.  Actualiza la caché de fuentes del sistema:
     ```bash
     fc-cache -fv
     ```
 
-## 3. Configuration Setup
+## Paso 4: Copia de Archivos de Configuración
 
-This directory contains the complete configuration for Sway and all related tools.
+Ahora, copia los archivos y directorios de configuración a las ubicaciones correctas.
 
-### Copying Configuration Files
+1.  **Crea los directorios necesarios:**
+    ```bash
+    mkdir -p ~/.config/sway/themes
+    mkdir -p ~/.scripts
+    ```
 
-First, copy all the configuration directories to your `~/.config` directory and the scripts to your home directory.
+2.  **Copia las configuraciones:**
+    ```bash
+    cp -r ./waybar/ ~/.config/
+    cp -r ./dunst/ ~/.config/
+    cp -r ./kitty/ ~/.config/
+    cp -r ./ghostty/ ~/.config/
+    cp -r ./wlogout/ ~/.config/
+    cp -r ./walker/ ~/.config/
+    cp -r ./btop/ ~/.config/
+    cp -r ./lazydocker/ ~/.config/
+    cp -r ./pavucontrol/ ~/.config/
+    cp -r ./nvim/ ~/.config/
+    cp -r ./fish/ ~/.config/
+    cp ./config ~/.config/sway/config
+    cp ./themes/tokyonight.conf ~/.config/sway/themes/
+    cp ./scripts/*.sh ~/.scripts/
+    ```
 
+3.  **Da permisos de ejecución a los scripts:**
+    ```bash
+    chmod +x ~/.scripts/*.sh
+    ```
+
+## Paso 5: Configuración Final
+
+### Cambiar el Wallpaper
+
+El archivo de configuración de Sway ha sido modificado para usar una ruta genérica para el wallpaper. Necesitas editarlo para apuntar a tu imagen preferida.
+
+1.  Abre el archivo `~/.config/sway/config`.
+2.  Busca la siguiente línea:
+    ```
+    exec swaybg -i $HOME/Pictures/wallpaper.png # ATENCIÓN: Debes cambiar esta ruta a tu wallpaper.
+    ```
+3.  Reemplaza `$HOME/Pictures/wallpaper.png` con la ruta real de tu wallpaper.
+
+### Cambiar la Shell por Defecto a Fish
+
+Para una mejor experiencia en la terminal, cambia tu shell por defecto a `fish`.
 ```bash
-mkdir -p ~/.config
-cp -r ./waybar ~/.config/
-cp -r ./dunst ~/.config/
-cp -r ./kitty ~/.config/
-cp -r ./ghostty ~/.config/
-cp -r ./wlogout ~/.config/
-cp -r ./walker ~/.config/
-cp -r ./btop ~/.config/
-cp -r ./lazydocker ~/.config/
-cp -r ./pavucontrol ~/.config/
-cp -r ./nvim ~/.config/
-cp -r ./fish ~/.config/
-cp -r ./scripts ~/
+chsh -s $(which fish)
 ```
+Necesitarás cerrar sesión y volver a iniciarla para que el cambio surta efecto.
 
-### Sway Configuration File
+## Paso 6: Iniciar Sway
 
-The main Sway configuration file is `sway/config`. Copy it to `~/.config/sway/`:
+Para iniciar Sway, simplemente escribe `sway` en una terminal TTY (puedes acceder a una con `Ctrl+Alt+F3`). Si usas un gestor de sesiones como GDM o LightDM, deberías ver una opción para iniciar la sesión "Sway" en la pantalla de login.
 
-```bash
-cp ./config ~/.config/sway/config
-```
-
-The content of the `sway/config` file is provided below for reference.
-
-```
-# Sway configuration file
-#
-# Generated from your hyprland configuration
-
-# Variables
-set $mod Mod4
-set $terminal ghostty -e fish
-set $browser google-chrome-stable
-
-# Layout
-default_border pixel 2
-gaps inner 0
-gaps outer 0
-
-# Font
-font pango:SauceCodePro Nerd Font 14
-
-# Autostart
-exec waybar
-exec swaybg -i /home/mephysto/foo/tokyonight-wallpapers/aid_upscayl_realesrgan-x4plus_x2.png
-# The following applications are not standard and need to be installed manually.
-# exec setsid elephant
-# exec setsid walker --gapplication-service
-exec wl-paste --type text --watch cliphist store
-exec wl-paste --type image --watch cliphist store
-exec wl-paste --type text --watch cliphist store --primary
-exec dunst # Start dunst explicitly
-exec /usr/lib/polkit-kde-authentication-agent-1 # Start polkit agent
-
-# Keybindings
-# Applications
-bindsym $mod+Return exec $terminal
-bindsym $mod+Shift+f exec nautilus --new-window
-bindsym $mod+Shift+b exec $browser
-bindsym $mod+Shift+Alt+b exec $browser --private
-bindsym $mod+Shift+t exec $terminal -e btop
-bindsym $mod+Shift+d exec $terminal -e lazydocker
-bindsym $mod+e exec $terminal -e nvim
-
-# Utilities
-bindsym $mod+Escape exec wlogout
-bindsym $mod+Shift+s exec loginctl lock-session && systemctl suspend
-bindsym $mod+v exec ~/scripts/clipboard.sh
-bindsym $mod+Shift+v exec ~/scripts/clipboard-manager.sh
-
-# Workspaces
-# switch to workspace
-bindsym $mod+1 workspace number 1
-bindsym $mod+2 workspace number 2
-bindsym $mod+3 workspace number 3
-bindsym $mod+4 workspace number 4
-bindsym $mod+5 workspace number 5
-bindsym $mod+6 workspace number 6
-bindsym $mod+7 workspace number 7
-bindsym $mod+8 workspace number 8
-bindsym $mod+9 workspace number 9
-bindsym $mod+0 workspace number 10
-
-# move focused container to workspace
-bindsym $mod+Shift+1 move container to workspace number 1
-bindsym $mod+Shift+2 move container to workspace number 2
-bindsym $mod+Shift+3 move container to workspace number 3
-bindsym $mod+Shift+4 move container to workspace number 4
-bindsym $mod+Shift+5 move container to workspace number 5
-bindsym $mod+Shift+6 move container to workspace number 6
-bindsym $mod+Shift+7 move container to workspace number 7
-bindsym $mod+Shift+8 move container to workspace number 8
-bindsym $mod+Shift+9 move container to workspace number 9
-bindsym $mod+Shift+0 move container to workspace number 10
-
-# Tiling
-# split in horizontal orientation
-bindsym $mod+h split h
-# split in vertical orientation
-bindsym $mod+v split v
-# enter floating mode
-bindsym $mod+Shift+space floating toggle
-# change focus between tiling / floating windows
-bindsym $mod+space focus mode_toggle
-# toggle tiling / floating
-bindsym $mod+Shift+f fullscreen toggle
-
-# focus
-bindsym $mod+left focus left
-bindsym $mod+down focus down
-bindsym $mod+up focus up
-bindsym $mod+right focus right
-
-# move
-bindsym $mod+Shift+left move left
-bindsym $mod+Shift+down move down
-bindsym $mod+Shift+up move up
-bindsym $mod+Shift+right move right
-
-# resize
-bindsym $mod+r mode "resize"
-mode "resize" {
-    bindsym left resize shrink width 10 px or 10 ppt
-    bindsym down resize grow height 10 px or 10 ppt
-    bindsym up resize shrink height 10 px or 10 ppt
-    bindsym right resize grow width 10 px or 10 ppt
-
-    # back to normal: Enter or Escape
-    bindsym Return mode "default"
-    bindsym Escape mode "default"
-}
-
-#
-# Scratchpad:
-#
-# This allows to have certain windows hidden on a scratchpad.
-# They can be taken out and put back in.
-#
-# move the currently focused window to the scratchpad
-bindsym $mod+Shift+minus move scratchpad
-# Show the next scratchpad window or hide the focused scratchpad window.
-# If there are multiple scratchpad windows, this command cycles through them.
-bindsym $mod+minus scratchpad show
-
-#
-# Exit sway
-#
-bindsym $mod+Shift+e exec swaymsg exit
-
-#
-# Reload configuration
-#
-bindsym $mod+Shift+c reload
-
-#
-# Input devices
-#
-input * {
-    xkb_layout es
-    xkb_options compose:caps
-}
-
-input type:touchpad {
-    scroll_factor 0.4
-}
-
-#
-# Monitor configuration
-#
-output DP-2 res 3440x1440@100.0Hz pos 0 0
-
-#
-# Waybar
-#
-bar {
-    swaybar_command waybar
-}
-
-#
-# Dunst
-#
-# No configuration needed in sway for dunst. It should be started by the autostart command.
-
-#
-# Includes
-#
-include /home/mephysto/.config/sway/themes/tokyonight.conf
-```
-
-## 4. Applying the Configuration
-
-To start sway, simply type `sway` in the terminal from a TTY. If you are using a display manager like GDM or LightDM, you should see a "sway" session option in the login screen.
-
-Enjoy your new sway setup!
+¡Disfruta de tu nuevo entorno Sway!
