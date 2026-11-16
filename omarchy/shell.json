@@ -1,0 +1,89 @@
+{
+  "bar": {
+    "background": "opaque",
+    "layout": {
+      "center": [
+        {
+          "format": "ddd d MMM HH:mm",
+          "formatAlt": "d MMMM 'W'ww yyyy",
+          "id": "omarchy.clock",
+          "verticalFormat": "HH\n—\nmm"
+        }
+      ],
+      "centerBegin": [
+        {
+          "id": "omarchy.indicators"
+        }
+      ],
+      "centerEnd": [
+        {
+          "id": "omarchy.weather"
+        },
+        {
+          "id": "omarchy.system-update"
+        }
+      ],
+      "left": [
+        {
+          "id": "omarchy.menu"
+        },
+        {
+          "id": "omarchy.workspaces"
+        }
+      ],
+      "right": [
+        {
+          "id": "omarchy.tray"
+        },
+        {
+          "id": "io.github.thisisgm.omapods"
+        },
+        {
+          "id": "omarchy.keyboard-layout"
+        },
+        {
+          "id": "harshith.system-monitor",
+          "barMode": "Both"
+        },
+        {
+          "id": "edbron.cloud-drives"
+        },
+        {
+          "id": "omarchy.agents"
+        },
+        {
+          "id": "omarchy.bluetooth"
+        },
+        {
+          "id": "omarchy.network"
+        },
+        {
+          "id": "omarchy.audio"
+        },
+        {
+          "id": "omarchy.monitor"
+        },
+        {
+          "id": "omarchy.power"
+        }
+      ],
+      "tray": [
+        {
+          "id": "superwhisper.panel"
+        }
+      ]
+    },
+    "position": "top"
+  },
+  "disabledPlugins": [
+    "omarchy.battery",
+    "omarchy.nightlight",
+    "omarchy.wifiqr"
+  ],
+  "idle": {
+    "lock": 300,
+    "screensaver": 150
+  },
+  "plugins": [],
+  "version": 1
+}

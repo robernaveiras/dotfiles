@@ -1,0 +1,17 @@
+# External Omarchy themes (name url)
+bauhaus https://github.com/mwaltzer/omarchy-bauhaus-theme
+catppuccin-dark https://github.com/Luquatic/omarchy-catppuccin-dark
+darcula https://github.com/noahljungberg/omarchy-darcula-theme
+dracula https://github.com/catlee/omarchy-dracula-theme
+flat-dracula https://github.com/OldJobobo/omarchy-flat-dracula-theme
+greek-noir https://github.com/HANCORE-linux/omarchy-greek-noir-theme
+gruvbox-material https://github.com/curbol/omarchy-gruvbox-material
+harbordark https://github.com/HANCORE-linux/omarchy-harbordark-theme
+hermarchy https://github.com/archer-clawbot/omarchy-hermarchy-theme
+japan-night https://github.com/devgtv/omarchy-japan-night-theme
+monokai https://github.com/bjarneo/omarchy-monokai-theme
+nes https://github.com/bjarneo/omarchy-nes-theme
+one-dark-pro https://github.com/sc0ttman/omarchy-one-dark-pro-theme
+sakura-mochi https://github.com/OldJobobo/omarchy-sakura-mochi-theme
+tokyoled https://github.com/Justin-De-Sio/omarchy-tokyoled-theme
+velvetnight https://github.com/HANCORE-linux/omarchy-velvetnight-theme

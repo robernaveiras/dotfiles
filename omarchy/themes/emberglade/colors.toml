@@ -1,0 +1,38 @@
+# Emberglade — deep forest black-green surfaces, burnished amber accent,
+# warm parchment text. Dark and high contrast: pine canopy by night,
+# embers and fallen leaves.
+
+mode = "dark"
+
+accent = "#e8944a"          # burnished amber — the colour the theme is remembered by
+selection = "#31473a"       # mossy undergrowth
+muted = "#87977c"           # lichen grey-green (comments, dividers, ANSI color8)
+
+# Surfaces, from the primary one outward: deep forest greens toward black.
+background = "#0d1a12"
+dark_background = "#09130d"
+darker_background = "#050b08"
+lighter_background = "#16281d"
+
+# Text, from primary to brightest: warm parchment on pine green.
+foreground = "#e9dcc0"
+dark_foreground = "#5c7259"
+light_foreground = "#cfc3a6"
+bright_foreground = "#faf3df"
+
+# The sixteen ANSI colours — autumn hues.
+red = "#d95f45"             # rust ember
+yellow = "#e3b25c"          # golden ochre
+orange = "#e8944a"          # amber (accent)
+green = "#8fb35f"           # fresh moss
+cyan = "#4f9e78"            # fern
+blue = "#6d8f93"            # forest mist
+magenta = "#8a6389"         # dusty plum bark
+brown = "#a06a3f"           # emberwood
+
+bright_red = "#f08a6a"
+bright_yellow = "#f2cf7f"
+bright_green = "#b2d183"
+bright_cyan = "#74c79f"
+bright_blue = "#8fb6ba"
+bright_magenta = "#b184a7"

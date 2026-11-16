@@ -1,0 +1,4 @@
+# Omarchy shell plugins (name url)
+edbron.cloud-drives https://github.com/edbron/omarchy-cloud-drives.git
+harshith.system-monitor https://github.com/Harshith292002/omarchy-system-monitor.git
+io.github.thisisgm.omapods https://github.com/thisisgm/omarchy-pods

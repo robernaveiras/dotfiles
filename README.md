@@ -1,4 +1,43 @@
-# Guía de Configuración de Sway para Ubuntu
+# Dotfiles (Omarchy & Sway)
+
+Este repositorio contiene mi configuración personal de escritorio:
+- **Omarchy (Arch Linux + Hyprland)**: configuración actual de Omarchy, Hyprland, terminales, Neovim, Fish, Btop, Voxtype, temas personalizados y plugins.
+- **Sway (Ubuntu)**: configuración heredada al final de este documento.
+
+---
+
+## Restaurar configuración de Omarchy en otro equipo
+
+### 1. Clonar el repositorio
+
+```bash
+git clone git@github.com:robernaveiras/dotfiles.git
+cd dotfiles
+```
+
+### 2. Ejecutar el script de restauración
+
+El script [`restore-omarchy.sh`](restore-omarchy.sh) crea un respaldo automático en `~/.config/.dotfiles-backup-<fecha>`, copia toda la configuración actual a `~/.config/`, instala los plugins listados en [`omarchy/plugins.txt`](omarchy/plugins.txt) y los temas externos de [`omarchy/themes.txt`](omarchy/themes.txt), y recarga Hyprland y `omarchy-shell`:
+
+```bash
+./restore-omarchy.sh
+```
+
+Opciones disponibles:
+- `./restore-omarchy.sh --no-plugins` — omite la descarga de plugins de Omarchy.
+- `./restore-omarchy.sh --no-themes` — omite la descarga de temas externos de Omarchy.
+
+### Qué incluye la personalización de Omarchy
+
+- **`omarchy/`**: `shell.json`, `shell.toml`, `language`, `defaults/` (`agent`, `dictation`), `extensions/omarchy-menu.jsonc`, `hooks/theme-set.d/10-owe-sync`, temas locales (`amberpine`, `emberglade`, `emberwood`) y listas de plugins/temas (`plugins.txt`, `themes.txt`).
+- **`hypr/` y `default/hypr/`**: `hyprland.lua`, `bindings.lua`, `input.lua`, `looknfeel.lua`, `monitors.lua`, `hyprmoncfg-monitors.lua`, `qconsole-size.lua`, `default/hypr/qconsole.lua`, `autostart.lua`, `hyprsunset.conf`, `xdph.conf`.
+- **Terminales y herramientas**: `alacritty/`, `ghostty/`, `kitty/`, `fish/`, `nvim/`, `btop/`, `voxtype/`.
+
+> **Nota sobre monitores**: `hypr/hyprmoncfg-monitors.lua` contiene la configuración específica del monitor actual (`ROG PG348Q`). Si el nuevo equipo tiene otro monitor, ajústalo con `hyprmoncfg` o edita `hypr/monitors.lua`.
+
+---
+
+# Guía de Configuración de Sway para Ubuntu (Legacy)
 
 Este repositorio contiene una configuración personal para el gestor de ventanas [Sway](https://swaywm.org/) y un conjunto de herramientas complementarias para tener un entorno de escritorio completo y funcional en Ubuntu 26.04 o superior.
 
