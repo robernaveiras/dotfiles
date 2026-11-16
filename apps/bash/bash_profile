@@ -1,0 +1,13 @@
+#
+# ~/.bash_profile
+#
+
+[[ -f ~/.bashrc ]] && . ~/.bashrc
+
+# Added by LM Studio CLI (lms)
+export PATH="$PATH:/home/mephysto/.lmstudio/bin"
+# End of LM Studio CLI section
+
+
+# Hermes Agent command
+case ":$PATH:" in *":$HOME/.local/bin:"*) ;; *) export PATH="$HOME/.local/bin:$PATH" ;; esac

@@ -1,0 +1,5 @@
+# Plugins instalados con `omarchy plugin add <url> --enable --yes` (no se commitean).
+edbron.cloud-drives	https://github.com/edbron/omarchy-cloud-drives.git
+harshith.system-monitor	https://github.com/Harshith292002/omarchy-system-monitor.git
+io.github.thisisgm.omapods	https://github.com/thisisgm/omarchy-pods
+# superwhisper-panel  (symlink a /opt/superwhisper/assets/omarchy-plugin/superwhisper-panel; lo crea su instalador, no se commitea)

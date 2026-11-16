@@ -1,0 +1,15 @@
+[Default Applications]
+text/html=google-chrome.desktop
+x-scheme-handler/http=google-chrome.desktop
+x-scheme-handler/https=google-chrome.desktop
+x-scheme-handler/about=google-chrome.desktop
+x-scheme-handler/unknown=google-chrome.desktop
+x-scheme-handler/mailto=google-chrome.desktop
+x-scheme-handler/webcal=google-chrome.desktop
+x-scheme-handler/stabilitymatrix=stabilitymatrix.desktop
+x-scheme-handler/itms=sidra.desktop
+x-scheme-handler/antigravity=antigravity.desktop
+x-scheme-handler/superwhisper=superwhisper-url.desktop
+
+[Added Associations]
+x-scheme-handler/antigravity=antigravity.desktop;

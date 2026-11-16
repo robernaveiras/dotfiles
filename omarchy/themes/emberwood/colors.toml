@@ -1,0 +1,35 @@
+mode = "dark"
+
+# Emberwood — high-contrast forest-at-dusk: deep wood-black backgrounds,
+# warm cream text, moss greens, ember orange accent. No blues anywhere:
+# the blue/cyan/magenta slots are filled with warm wood and sage tones.
+
+accent = "#ee9440"          # ember orange
+selection = "#3d3a26"       # olive bark
+muted = "#8c8468"           # sun-faded husk
+
+background = "#16150f"      # deep wood shadow
+dark_background = "#0e0e09"
+darker_background = "#080805"
+lighter_background = "#2b2719" # warm heartwood
+
+foreground = "#f0e7cf"      # birch cream (high contrast)
+dark_foreground = "#7d765c"
+light_foreground = "#e3d8ba"
+bright_foreground = "#faf3e0"
+
+red = "#e05d48"             # rust embers
+yellow = "#e6b455"          # amber sap
+orange = "#ee9440"          # ember (matches accent)
+green = "#9dbf5e"           # moss leaf
+cyan = "#7fb069"            # forest sage (no blue tint)
+blue = "#c89b6a"            # polished oak (blue slot, warm on purpose)
+magenta = "#d98f66"         # warm clay
+brown = "#8a5a30"           # walnut
+
+bright_red = "#f27a63"
+bright_yellow = "#f4c766"
+bright_green = "#b7d976"
+bright_cyan = "#98cc82"
+bright_blue = "#dbb182"
+bright_magenta = "#eda77f"

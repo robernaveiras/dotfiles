@@ -1,0 +1,68 @@
+{
+  "name": "profile-20260902-213635",
+  "created_at": "2026-09-02T19:36:39.125490337Z",
+  "updated_at": "2026-09-02T19:40:33.609686116Z",
+  "outputs": [
+    {
+      "key": "ancor communications inc|rog pg348q|#asprivhf3tbd",
+      "match_key": "ancor communications inc|rog pg348q|#asprivhf3tbd",
+      "name": "DP-2",
+      "description": "Ancor Communications Inc ROG PG348Q #ASPrivHf3Tbd",
+      "make": "Ancor Communications Inc",
+      "model": "ROG PG348Q",
+      "serial": "#ASPrivHf3Tbd",
+      "enabled": true,
+      "mode": "3440x1440@100.00Hz",
+      "width": 3440,
+      "height": 1440,
+      "refresh": 100,
+      "x": 2972,
+      "y": 893,
+      "scale": 1,
+      "transform": 0,
+      "bitdepth": 8,
+      "cm": "srgb",
+      "sdr_brightness": 1,
+      "sdr_saturation": 1,
+      "sdr_min_luminance": 0.2,
+      "sdr_max_luminance": 80,
+      "min_luminance": 0
+    },
+    {
+      "key": "philips consumer electronics company|27e2n1500l|uk02606052846",
+      "match_key": "philips consumer electronics company|27e2n1500l|uk02606052846",
+      "name": "HDMI-A-1",
+      "description": "Philips Consumer Electronics Company 27E2N1500L UK02606052846",
+      "make": "Philips Consumer Electronics Company",
+      "model": "27E2N1500L",
+      "serial": "UK02606052846",
+      "enabled": true,
+      "mode": "2560x1440@75.00Hz",
+      "width": 2560,
+      "height": 1440,
+      "refresh": 75.001,
+      "x": 412,
+      "y": 893,
+      "scale": 1,
+      "transform": 0,
+      "bitdepth": 8,
+      "cm": "srgb",
+      "sdr_brightness": 1,
+      "sdr_saturation": 1,
+      "sdr_min_luminance": 0.2,
+      "sdr_max_luminance": 80,
+      "min_luminance": 0
+    }
+  ],
+  "workspaces": {
+    "enabled": false,
+    "strategy": "sequential",
+    "max_workspaces": 9,
+    "group_size": 3,
+    "monitor_order": [
+      "ancor communications inc|rog pg348q|#asprivhf3tbd",
+      "philips consumer electronics company|27e2n1500l|uk02606052846"
+    ]
+  },
+  "exec": ""
+}

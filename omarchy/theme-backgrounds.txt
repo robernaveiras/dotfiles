@@ -1,0 +1,5 @@
+# Wallpaper fijado por theme (recuerda el `omarchy theme bg set` tras `theme set`).
+amberpine	ember-mist.webp
+emberglade	0-redqueen.webp
+emberwood	quiet-woods.jpg
+velvetnight	BG1.jpg

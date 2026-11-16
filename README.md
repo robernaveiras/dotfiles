@@ -1,143 +1,104 @@
-# Guía de Configuración de Sway para Ubuntu
+# Dotfiles — Omarchy + Hyprland
 
-Este repositorio contiene una configuración personal para el gestor de ventanas [Sway](https://swaywm.org/) y un conjunto de herramientas complementarias para tener un entorno de escritorio completo y funcional en Ubuntu 26.04 o superior.
+Configuración personal de un equipo con [Omarchy](https://omarchy.org) (Arch) e
+Hyprland, pensada para restaurar el mismo escritorio en otra máquina.
 
-## Paso 1: Clonar el Repositorio
+Incluye la personalización de Omarchy (themes escritos a mano, bar, hooks,
+branding), los overrides de Hyprland y las configs de las apps que uso.
+La configuración anterior de Sway/Ubuntu está en `archive/sway-ubuntu/`.
 
-Primero, clona este repositorio en tu máquina local.
-
-```bash
-git clone https://github.com/tu-usuario/tu-repositorio.git
-cd tu-repositorio
 ```
-**Nota:** Reemplaza `https://github.com/tu-usuario/tu-repositorio.git` con la URL real de este repositorio.
-
-## Paso 2: Instalación de Paquetes
-
-Abre una terminal e instala todas las dependencias y programas necesarios.
-
-### Paquetes Principales desde APT
-
-`git` es necesario para clonar el repositorio y `curl` para descargar `rustup`.
-
-```bash
-sudo apt update
-sudo apt install -y sway swaybg waybar dunst nautilus wget curl git grim slurp btop cliphist unzip wlogout wl-clipboard pavucontrol polkit-kde-agent-1 neovim fish
-```
-
-### Bluetui (Gestor de Bluetooth TUI)
-
-`bluetui` se instala usando `cargo`, el gestor de paquetes de Rust.
-
-1.  **Instalar `rustup` (el instalador de Rust):**
-    ```bash
-    curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
-    ```
-    Sigue las instrucciones en pantalla. Después de la instalación, asegúrate de recargar tu shell o abrir una nueva para que los cambios en el `PATH` surtan efecto.
-
-2.  **Instalar `bluetui`:**
-    ```bash
-    cargo install bluetui
-    ```
-
-### Terminal Ghostty
-
-Esta configuración usa [Ghostty](https://github.com/ghostty-org/ghostty) como emulador de terminal por defecto.
-
-```bash
-sudo add-apt-repository ppa:mkasberg/ghostty-ubuntu
-sudo apt update
-sudo apt install ghostty
+omarchy/                 personalización de Omarchy
+  themes/                themes escritos a mano (colores, iconos, wallpapers)
+  themes-installed.txt   themes instalados desde git: solo la URL
+  plugins-installed.txt  plugins del bar instalados desde git: solo la URL
+  hypr/                  overrides de Hyprland (~/.config/hypr)
+  hypr-default/          override del módulo privado de Omarchy (Quake console)
+  hyprmoncfg-profiles/   perfiles de monitores de hyprmoncfg
+  config/                shell.json, shell.toml, language, branding, hooks, defaults
+  theme.txt              theme activo
+  theme-backgrounds.txt  wallpaper fijado por theme
+  toggles.txt            flags de Omarchy
+apps/                    ghostty, alacritty, kitty, foot, fish, nvim, btop, htop,
+                         mpv, starship, git, lazydocker, bash, systemd,
+                         environment.d, local-bin
+scripts/restore-omarchy.sh   restaurar en otra máquina
+scripts/backup-omarchy.sh    recapturar el estado vivo a este repo
+archive/sway-ubuntu/     config antigua (Sway, waybar, walker, dunst, wlogout)
 ```
 
-### Navegador Google Chrome
+## Restaurar en otra máquina
+
+1. Instala Omarchy y arranca una sesión (el tema por defecto es Tokyo Night).
+2. `git clone https://github.com/robernaveiras/dotfiles.git && cd dotfiles`
+3. `scripts/restore-omarchy.sh --dry-run` para ver qué va a tocar.
+4. `scripts/restore-omarchy.sh`
+
+Es idempotente: se puede repetir. `--no-remote` deja fuera los `theme install` y
+`plugin add` de red si no quieres clonar los 16 themes (~600 MB).
+
+El orden importa y el script lo respeta:
+
+1. themes propios y config de Omarchy (los hooks quedan ejecutables).
+2. `omarchy plugin add <url> --enable --yes` y `omarchy theme install <url>`.
+3. overrides de Hyprland: `~/.config/hypr` y `~/.config/default/hypr`.
+4. apps, bash, systemd user (`daemon-reload` + timer de backup).
+5. `omarchy font set`, toggles, `omarchy theme set` y **re-fijar el wallpaper**.
+
+Lo último no es un detalle: `omarchy theme set` pone el primer fondo del theme,
+así que el wallpaper se fija después con `omarchy theme bg set` usando
+`theme-backgrounds.txt`. Si te saltas ese paso el escritorio amanece con otro
+fondo.
+
+## Qué NO está en el repo (y por qué)
+
+- **Themes y plugins instalados desde git**: ~600 MB de wallpapers. Se guardan
+  como URL en `themes-installed.txt` / `plugins-installed.txt` y el restore los
+  clona. `superwhisper-panel` es un symlink que crea el instalador de
+  Superwhisper: hoy apunta a `/opt/superwhisper/assets/omarchy-plugin/…`, que ya
+  no existe en esta máquina, así que la entrada del bar necesita un Superwhisper
+  que vuelva a traer el plugin.
+- **`~/.local/state/omarchy/current/`**: salida generada por `omarchy theme set`.
+  Se regenera; los symlinks `~/.config/btop/themes/current.theme` y
+  `~/.config/nvim/lua/plugins/theme.lua` los crea Omarchy (el restore los
+  recrea por si acaso).
+- **El bloque `[credential]` de `git/config`**: apuntaba a una ruta de `mise` de
+  esta máquina. El restore lo sustituye con `gh auth setup-git`.
+- **Tokens, claves y keyring**: nunca se commitean. `secret-tool`/Keyring y
+  `rclone` se configuran a mano en la máquina nueva.
+
+## Piezas que necesitan una decisión
+
+- **Monitores**: `omarchy/hypr/monitors.lua` y `hyprmoncfg-monitors.lua` llevan
+  el ROG PG348Q (3440×1440). El restore solo los activa si `hyprctl monitors all`
+  ve 3440×1440; si no, los deja como `.disabled` para que los ajustes a mano.
+- **Quake console**: Omarchy tiene `share`/`box` privados en su módulo
+  `default/hypr/qconsole.lua`, así que un fichero de usuario en la ruta de
+  `require` no lo pisa. El patrón que funciona es `omarchy/hypr/qconsole-size.lua`,
+  que hace `package.preload["default.hypr.qconsole"]` **antes** de
+  `require("default.hypr.omarchy")` en `hyprland.lua`, apuntando a
+  `~/.config/default/hypr/qconsole.lua` (`share 0.65`, `box 1.8`). Si copias
+  estos ficheros fuera de orden, la consola vuelve al tamaño de Omarchy.
+- **Terminales**: las configs de `ghostty`, `alacritty`, `kitty` y `foot`
+  importan el theme generado (`~/.local/state/omarchy/current/theme/…`); solo
+  llevan tus líneas propias, los colores los pone el theme.
+- **Atajos**: `omarchy/hypr/bindings.lua` reasigna `Super+Shift+S` a suspender y
+  `Super+Shift+O` a la captura de pantalla, y quita `Super+Shift+M`.
+
+## Actualizar el repo desde la máquina
 
 ```bash
-wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
-sudo apt install -y ./google-chrome-stable_current_amd64.deb
-rm google-chrome-stable_current_amd64.deb
+scripts/backup-omarchy.sh
+git status --short && git diff
 ```
 
-### Lazydocker (Opcional)
+Recaptura el estado vivo, regenera las listas de URLs, quita el bloque
+`[credential]` y normaliza permisos. Revisa el diff antes de commitear:
+`btop.conf` y `htoprc` cambian solos cuando tocas la UI.
 
-Se incluye un atajo de teclado para [Lazydocker](https://github.com/jesseduffield/lazydocker) para gestionar contenedores Docker.
+## Verificación
 
-```bash
-go install github.com/jesseduffield/lazydocker@latest
-```
-
-## Paso 3: Instalación de la Tipografía
-
-La configuración utiliza la fuente `SourceCodePro Nerd Font` para asegurar que todos los iconos se muestren correctamente.
-
-1.  Descarga y extrae la fuente:
-    ```bash
-    wget https://github.com/ryanoasis/nerd-fonts/releases/download/v3.2.1/SourceCodePro.zip
-    mkdir -p ~/.local/share/fonts
-    unzip SourceCodePro.zip -d ~/.local/share/fonts/
-    rm SourceCodePro.zip
-    ```
-2.  Actualiza la caché de fuentes del sistema:
-    ```bash
-    fc-cache -fv
-    ```
-
-## Paso 4: Copia de Archivos de Configuración
-
-Ahora, copia los archivos y directorios de configuración a las ubicaciones correctas.
-
-1.  **Crea los directorios necesarios:**
-    ```bash
-    mkdir -p ~/.config/sway/themes
-    mkdir -p ~/.scripts
-    ```
-
-2.  **Copia las configuraciones:**
-    ```bash
-    cp -r ./waybar/ ~/.config/
-    cp -r ./dunst/ ~/.config/
-    cp -r ./kitty/ ~/.config/
-    cp -r ./ghostty/ ~/.config/
-    cp -r ./wlogout/ ~/.config/
-    cp -r ./walker/ ~/.config/
-    cp -r ./btop/ ~/.config/
-    cp -r ./lazydocker/ ~/.config/
-    cp -r ./pavucontrol/ ~/.config/
-    cp -r ./nvim/ ~/.config/
-    cp -r ./fish/ ~/.config/
-    cp ./config ~/.config/sway/config
-    cp ./themes/tokyonight.conf ~/.config/sway/themes/
-    cp ./scripts/*.sh ~/.scripts/
-    ```
-
-3.  **Da permisos de ejecución a los scripts:**
-    ```bash
-    chmod +x ~/.scripts/*.sh
-    ```
-
-## Paso 5: Configuración Final
-
-### Cambiar el Wallpaper
-
-El archivo de configuración de Sway ha sido modificado para usar una ruta genérica para el wallpaper. Necesitas editarlo para apuntar a tu imagen preferida.
-
-1.  Abre el archivo `~/.config/sway/config`.
-2.  Busca la siguiente línea:
-    ```
-    exec swaybg -i $HOME/Pictures/wallpaper.png # ATENCIÓN: Debes cambiar esta ruta a tu wallpaper.
-    ```
-3.  Reemplaza `$HOME/Pictures/wallpaper.png` con la ruta real de tu wallpaper.
-
-### Cambiar la Shell por Defecto a Fish
-
-Para una mejor experiencia en la terminal, cambia tu shell por defecto a `fish`.
-```bash
-chsh -s $(which fish)
-```
-Necesitarás cerrar sesión y volver a iniciarla para que el cambio surta efecto.
-
-## Paso 6: Iniciar Sway
-
-Para iniciar Sway, simplemente escribe `sway` en una terminal TTY (puedes acceder a una con `Ctrl+Alt+F3`). Si usas un gestor de sesiones como GDM o LightDM, deberías ver una opción para iniciar la sesión "Sway" en la pantalla de login.
-
-¡Disfruta de tu nuevo entorno Sway!
+- `bash -n` en ambos scripts y `luac -p` en todos los `.lua` del repo.
+- `scripts/restore-omarchy.sh --dry-run` con `HOME` en un directorio vacío y
+  `omarchy`/`gh`/`hyprctl`/`systemctl` stubbeados, para ejercitar todas las
+  rutas sin tocar el escritorio.
