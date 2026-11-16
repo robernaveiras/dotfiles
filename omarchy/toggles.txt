@@ -1,0 +1,4 @@
+# Flags de Omarchy (`omarchy toggle <flag> on`).
+hypr
+quake-console
+screensaver-off

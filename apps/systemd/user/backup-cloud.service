@@ -1,0 +1,9 @@
+[Unit]
+Description=Backup Diario a OneDrive con Duplicity
+After=network-online.target
+
+[Service]
+Type=oneshot
+ExecStart=/home/mephysto/.local/bin/backup-cloud.sh
+Nice=19
+IOSchedulingClass=idle

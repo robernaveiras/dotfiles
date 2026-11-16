@@ -1,0 +1,32 @@
+mode = "dark"
+
+# Amberpine — autumn forest at dusk: black-green timber, ember orange, bone light.
+accent = "#e07b36"
+selection = "#2c3b27"
+muted = "#57684f"
+
+background = "#0d140e"
+dark_background = "#080d09"
+darker_background = "#040705"
+lighter_background = "#1c291d"
+
+foreground = "#ecead9"
+dark_foreground = "#5c6b52"
+light_foreground = "#a8b49b"
+bright_foreground = "#f8f4e6"
+
+red = "#d1564f"
+yellow = "#d9a84a"
+orange = "#e07b36"
+green = "#8db568"
+cyan = "#72b099"
+blue = "#6b9bb8"
+magenta = "#b87a95"
+brown = "#a4713f"
+
+bright_red = "#e56f63"
+bright_yellow = "#eebd5f"
+bright_green = "#a3c97d"
+bright_cyan = "#86c3aa"
+bright_blue = "#82b3cc"
+bright_magenta = "#cf95ab"
