@@ -1,0 +1,16 @@
+https://github.com/mwaltzer/omarchy-bauhaus-theme
+https://github.com/Luquatic/omarchy-catppuccin-dark
+https://github.com/noahljungberg/omarchy-darcula-theme
+https://github.com/catlee/omarchy-dracula-theme
+https://github.com/OldJobobo/omarchy-flat-dracula-theme
+https://github.com/HANCORE-linux/omarchy-greek-noir-theme
+https://github.com/curbol/omarchy-gruvbox-material
+https://github.com/HANCORE-linux/omarchy-harbordark-theme
+https://github.com/archer-clawbot/omarchy-hermarchy-theme
+https://github.com/devgtv/omarchy-japan-night-theme
+https://github.com/bjarneo/omarchy-monokai-theme
+https://github.com/bjarneo/omarchy-nes-theme
+https://github.com/sc0ttman/omarchy-one-dark-pro-theme
+https://github.com/OldJobobo/omarchy-sakura-mochi-theme
+https://github.com/Justin-De-Sio/omarchy-tokyoled-theme
+https://github.com/HANCORE-linux/omarchy-velvetnight-theme

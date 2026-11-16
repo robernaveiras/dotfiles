@@ -1,0 +1,3 @@
+screensaver-off
+quake-console
+hypr/flags.lua

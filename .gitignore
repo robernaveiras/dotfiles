@@ -1,0 +1,19 @@
+# caches y basura de apps
+*.log
+Cache/
+cache/
+Crashpad/
+blob_storage/
+Code Cache/
+Network Persistent State
+Trust Tokens*
+Shared Dictionary/
+Local Storage/
+Session Storage/
+Dictionaries/
+
+# artefactos locales
+*.bak
+*.tmp
+.DS_Store
+.vscode/

@@ -1,0 +1,3 @@
+https://github.com/edbron/omarchy-cloud-drives.git
+https://github.com/Harshith292002/omarchy-system-monitor.git
+https://github.com/thisisgm/omarchy-pods
